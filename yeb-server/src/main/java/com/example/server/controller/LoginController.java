@@ -50,6 +50,7 @@ public class LoginController {
         //所以要求用户名不能重名
         Admin admin = adminService.getAdminByUsername(username);
         admin.setPassword(null);
+        admin.setRoles(adminService.getRoles(admin.getId()));
         return admin;
 
     }

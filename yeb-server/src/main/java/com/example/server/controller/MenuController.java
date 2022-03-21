@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author qxy
@@ -29,7 +29,7 @@ public class MenuController {
 
     @ApiOperation(value = "通过用户id查询菜单列表")
     @GetMapping("/menu")
-    public List<Menu> getMenusByAdminId(){
-            return menuService.getMenusByAdminId();
+    public List<Menu> getMenusByAdminId() {
+        return menuService.getMenusByAdminId();
     }
 }
