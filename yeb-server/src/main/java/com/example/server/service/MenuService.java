@@ -3,6 +3,8 @@ package com.example.server.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.server.pojo.Menu;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务类
@@ -13,4 +15,5 @@ import com.example.server.pojo.Menu;
  */
 public interface MenuService extends IService<Menu> {
 
+    List<Menu> getMenusByAdminId();
 }

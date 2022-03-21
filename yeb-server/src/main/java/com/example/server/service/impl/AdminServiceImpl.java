@@ -7,16 +7,15 @@ import com.example.server.mapper.AdminMapper;
 import com.example.server.pojo.Admin;
 import com.example.server.pojo.RespBean;
 import com.example.server.service.AdminService;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -51,13 +50,20 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
 
     /**
      * 登录
+     *
      * @param username
      * @param password
+     * @param code
      * @param request
      * @return
      */
     @Override
-    public RespBean login(String username, String password, HttpServletRequest request) {
+    public RespBean login(String username, String password, String code,HttpServletRequest request) {
+        //用户的验证码与session中进行比较
+        String captcha = (String) request.getSession().getAttribute("captcha");
+        if(StringUtils.isEmpty(code)||!captcha.equalsIgnoreCase(code)){
+            return RespBean.error("验证码输入错误,请重新输入");
+        }
         //判断登录是否合法
         UserDetails details = userDetailsService.loadUserByUsername(username);//需要重写，去数据库里查
         System.out.println("detail:"+details);
