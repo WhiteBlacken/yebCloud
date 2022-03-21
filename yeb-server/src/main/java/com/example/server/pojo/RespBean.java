@@ -1,7 +1,11 @@
 package com.example.server.pojo;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 /**
@@ -14,9 +18,13 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ApiModel(value = "统一返回对象",description = "")
 public class RespBean {
+    @ApiModelProperty(value = "状态码")
     private long code;
+    @ApiModelProperty(value = "提示信息")
     private String message;
+    @ApiModelProperty(value = "返回对象")
     private Object obj;
 
     public static RespBean success(String message) {

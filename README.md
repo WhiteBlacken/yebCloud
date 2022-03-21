@@ -7,3 +7,6 @@
 * 地址：http://localhost:8081/doc.html
 ## 验证码
 * captcha  
+## 缓存
+* redis
+## 全局异常处理
