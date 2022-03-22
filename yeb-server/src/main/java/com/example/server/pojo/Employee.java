@@ -137,5 +137,29 @@ public class Employee implements Serializable {
     @TableField("salaryId")
     private Integer salaryId;
 
+    @ApiModelProperty(value = "民族")
+    @TableField(exist = false)
+    private Nation nation;
+
+    @ApiModelProperty(value = "政治面貌")
+    @TableField(exist = false)
+    private PoliticsStatus politicsStatus;
+
+
+    @ApiModelProperty(value = "部门")
+    @TableField(exist = false)
+    private Department department;
+
+    @ApiModelProperty(value = "职称")
+    @TableField(exist = false)
+    private Joblevel joblevel;
+
+    @ApiModelProperty(value = "职位")
+    @TableField(exist = false)
+    private Position position;
+
+    @ApiModelProperty(value = "工资账套")
+    @TableField(exist = false)
+    private Salary salary;
 
 }
